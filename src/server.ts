@@ -12,8 +12,8 @@ app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json())
 
-app.use("/tests", testRouter)
-app.use("/patients", patientRouter)
+app.use("/", testRouter)
+app.use("/", patientRouter)
 
 app.use(errorHandler)
 export default app;

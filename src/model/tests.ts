@@ -17,7 +17,7 @@ const testSchema = new Schema<ITest>({
         type: String,
         required: [true, "PatientId is required"],
         trim: true,
-        maxLength: [20, "PatientId should not exceed 20 characters"]
+        maxLength: [25, "PatientId should not exceed 20 characters"]
     },
 
     testName: {

@@ -4,7 +4,7 @@ import testRepository from "../repository/test";
 export const testRouter = express.Router()
 
 
-testRouter.get("/", async (req, res, next) => {
+testRouter.get("/tests", async (req, res, next) => {
   try {
     const tests = await testRepository.getAllTest();
     res.json({ tests });
@@ -14,7 +14,7 @@ testRouter.get("/", async (req, res, next) => {
 });
 
 
-testRouter.get("/:id", async (req, res, next) => {
+testRouter.get("/patients/:id/tests", async (req, res, next) => {
   try {
     const test = await testRepository.getTestBypatientId(req.params.id);
     if (!test) {
@@ -37,7 +37,7 @@ testRouter.post("/tests", async (req, res, next) => {
 });
 
 
-testRouter.put("/:id", async (req, res, next) => {
+testRouter.patch("/tests/:id", async (req, res, next) => {
   try {
     const test = await testRepository.updateTest(req.params.id, req.body);
     if (!test) {
@@ -50,7 +50,7 @@ testRouter.put("/:id", async (req, res, next) => {
 });
 
 
-testRouter.delete("/:id", async (req, res, next) => {
+testRouter.delete("/tests/:id", async (req, res, next) => {
   try {
     const test = await testRepository.deleteTest(req.params.id);
     if (!test) {

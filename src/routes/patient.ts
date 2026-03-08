@@ -4,7 +4,7 @@ import patientRepository from "../repository/patient";
 export const patientRouter = express.Router()
 
 
-patientRouter.get("/", async (req, res, next) => {
+patientRouter.get("/patients", async (req, res, next) => {
   try {
     const patients = await patientRepository.getAllPatients();
     res.json({ patients });
@@ -14,7 +14,7 @@ patientRouter.get("/", async (req, res, next) => {
 });
 
 
-patientRouter.get("/:id", async (req, res, next) => {
+patientRouter.get("/patients/:id", async (req, res, next) => {
   try {
     const patient = await patientRepository.getPatientById(req.params.id);
     if (!patient) {
@@ -37,7 +37,7 @@ patientRouter.post("/patients", async (req, res, next) => {
 });
 
 
-patientRouter.patch("/:id", async (req, res, next) => {
+patientRouter.patch("/patients/:id", async (req, res, next) => {
   try {
     const patient = await patientRepository.updatePatient(req.params.id, req.body);
     if (!patient) {
@@ -50,7 +50,7 @@ patientRouter.patch("/:id", async (req, res, next) => {
 });
 
 
-patientRouter.delete("/:id", async (req, res, next) => {
+patientRouter.delete("/patients/:id", async (req, res, next) => {
   try {
     const patient = await patientRepository.deletePatient(req.params.id);
     if (!patient) {
